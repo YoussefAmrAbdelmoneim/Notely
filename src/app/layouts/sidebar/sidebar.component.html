@@ -60,14 +60,13 @@
             />
           </svg>
           <span
-            role="button"
             class="ms-3 text-purple-700 dark:text-purple-200 font-semibold group-hover:text-purple-900 dark:group-hover:text-white transition-colors"
           >
             Home
           </span>
         </a>
       </li>
-      <li routerLink="/logout" class="cursor-pointer">
+      <li class="cursor-pointer" (click)="logOut()">
         <a
           class="flex items-center p-3 rounded-xl bg-gradient-to-r from-red-50/50 to-orange-50/50 hover:from-red-100 hover:to-orange-100 dark:from-red-900/30 dark:to-orange-900/30 transition-all duration-300 group shadow-sm hover:shadow-red-100 hover:scale-[1.02] dark:hover:shadow-gray-800"
         >
@@ -86,8 +85,6 @@
             />
           </svg>
           <span
-            role="button"
-            (click)="logOut()"
             class="ms-3 text-red-700 dark:text-red-200 font-semibold group-hover:text-red-900 dark:group-hover:text-white transition-colors"
           >
             Log Out
@@ -118,7 +115,6 @@
             />
           </svg>
           <span
-            role="button"
             class="ms-3 text-purple-700 dark:text-purple-200 font-semibold group-hover:text-purple-900 dark:group-hover:text-white transition-colors"
           >
             Sign In
@@ -148,7 +144,6 @@
             />
           </svg>
           <span
-            role="button"
             class="ms-3 text-purple-700 dark:text-purple-200 font-semibold group-hover:text-purple-900 dark:group-hover:text-white transition-colors"
           >
             Sign Up
