@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+@custom-variant dark (&:where(.dark, .dark *));
+@import 'ngx-toastr/toastr';
+.animate-gradient-shift {
+  background-size: 300% 300%;
+  animation: gradientShift 15s ease infinite;
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-float-bubbles{
+  .animate-float-bubble-1 {
+    animation: floatBubble1 18s ease-in-out infinite;
+  }
+  .animate-float-bubble-2 {
+    animation: floatBubble2 22s ease-in-out infinite;
+  }
+  .animate-float-bubble-3 {
+    animation: floatBubble3 25s ease-in-out infinite;
+  }
+  .animate-float-bubble-4 {
+    animation: floatBubble4 20s ease-in-out infinite;
+  }  
+}
+@keyframes floatBubble1 {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(30px, 50px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes floatBubble2 {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-40px, 30px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes floatBubble3 {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(20px, -40px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes floatBubble4 {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-30px, -30px); }
+  100% { transform: translate(0, 0); }
+}

@@ -1,0 +1,125 @@
+<section>
+  <div class="min-h-screen flex items-center justify-center p-4">
+    <div class="relative w-full max-w-md">
+      <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+        <div class="w-8 h-8 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full shadow-lg flex items-center justify-center">
+          <div class="w-4 h-4 bg-amber-200 rounded-full shadow-inner"></div>
+        </div>
+        <div class="w-2 h-4 bg-amber-700/80 mx-auto shadow-md"></div>
+      </div>
+      <div class="bg-gradient-to-br from-white via-purple-50 to-pink-50 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 rounded-lg shadow-xl overflow-hidden transform rotate-1 hover:rotate-0 transition-all duration-300 border border-purple-200/50 dark:border-gray-600">
+        <header class="p-6 border-b border-purple-200/50 dark:border-gray-600">
+          <h1 class="text-2xl font-bold text-purple-800 dark:text-purple-200 font-serif">Create Account</h1>
+          <p class="text-sm text-purple-600/80 dark:text-purple-300 mt-1">Join our community today!</p>
+        </header>
+        <form class="p-6 space-y-4" [formGroup]="registerForm" (ngSubmit)="submitForm()" aria-labelledby="form-title">
+          <div>
+            <label for="name" class="block text-sm font-medium text-purple-700 dark:text-purple-300 mb-1">Full Name</label>
+            <input id="name" formControlName="name" type="text" name="name" aria-describedby="name-help name-errors"
+                   class="w-full px-3 py-2 border dark:text-white border-purple-200/50 dark:border-gray-600 rounded-lg bg-white/50 dark:bg-gray-800/50 focus:ring-2 focus:ring-purple-500 dark:focus:ring-pink-500 focus:border-transparent transition-all"
+                   placeholder="Name" aria-invalid="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
+            <p id="name-help" class="text-xs text-purple-500/70 dark:text-purple-400/70 mt-1">Must be 3-20 characters long</p>
+            
+            @if (registerForm.get('name')?.touched && registerForm.get('name')?.errors) {
+              <div id="name-errors" class="mt-1 text-sm text-red-600 dark:text-red-400 space-y-1" role="alert">
+                @if (registerForm.get('name')?.getError('required')) {
+                  <p>• Name is required</p>
+                }
+                @if (registerForm.get('name')?.getError('minlength')) {
+                  <p>• Minimum length must be 3 characters</p>
+                }
+                @if (registerForm.get('name')?.getError('maxlength')) {
+                  <p>• Maximum length must be 20 characters</p>
+                }
+              </div>
+            }
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-purple-700 dark:text-purple-300 mb-1">Email</label>
+            <input id="email" formControlName="email" type="email" name="email" aria-describedby="email-help email-errors"
+                   class="w-full px-3 py-2 border dark:text-white border-purple-200/50 dark:border-gray-600 rounded-lg bg-white/50 dark:bg-gray-800/50 focus:ring-2 focus:ring-purple-500 dark:focus:ring-pink-500 focus:border-transparent transition-all"
+                   placeholder="name@example.com" aria-invalid="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+            <p id="email-help" class="text-xs text-purple-500/70 dark:text-purple-400/70 mt-1">Enter a valid email address</p>
+            
+            @if (registerForm.get('email')?.touched && registerForm.get('email')?.errors) {
+              <div id="email-errors" class="mt-1 text-sm text-red-600 dark:text-red-400 space-y-1" role="alert">
+                @if (registerForm.get('email')?.getError('required')) {
+                  <p>• Email is required</p>
+                }
+                @if (registerForm.get('email')?.getError('email')) {
+                  <p>• Please enter a valid email address</p>
+                }
+              </div>
+            }
+          </div>
+          <div>
+            <label for="password"  class="block text-sm font-medium text-purple-700 dark:text-purple-300 mb-1">Password</label>
+            <input id="password" autocomplete="new-password" formControlName="password" type="password" name="password" aria-describedby="password-help password-errors"
+                   class="w-full px-3 py-2 border dark:text-white border-purple-200/50 dark:border-gray-600 rounded-lg bg-white/50 dark:bg-gray-800/50 focus:ring-2 focus:ring-purple-500 dark:focus:ring-pink-500 focus:border-transparent transition-all"
+                   placeholder="••••••" aria-invalid="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+            <p id="password-help" class="text-xs text-purple-500/70 dark:text-purple-400/70 mt-1">
+              Must be 6-10 characters, start with uppercase, and contain letters and numbers
+            </p>
+            @if (registerForm.get('password')?.touched && registerForm.get('password')?.errors) {
+              <div id="password-errors" class="mt-1 text-sm text-red-600 dark:text-red-400 space-y-1" role="alert">
+                @if (registerForm.get('password')?.getError('required')) {
+                  <p>• Password is required</p>
+                }
+                @if (registerForm.get('password')?.getError('minlength')) {
+                  <p>• Minimum length must be 6 characters</p>
+                }
+                @if (registerForm.get('password')?.getError('pattern')) {
+                  <p>• Must start with uppercase and contain letters/numbers</p>
+                }
+              </div>
+            }
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="age" class="block text-sm font-medium text-purple-700 dark:text-purple-300 mb-1">Age</label>
+              <input id="age" formControlName="age" type="number" name="age" aria-describedby="age-errors"
+                     class="w-full px-3 py-2 border dark:text-white border-purple-200/50 dark:border-gray-600 rounded-lg bg-white/50 dark:bg-gray-800/50 focus:ring-2 focus:ring-purple-500 dark:focus:ring-pink-500 focus:border-transparent transition-all"
+                     placeholder="Age" min="1" max="100" aria-invalid="registerForm.get('age')?.invalid && registerForm.get('age')?.touched">
+              
+              @if (registerForm.get('age')?.touched && registerForm.get('age')?.errors) {
+                <div id="age-errors" class="mt-1 text-sm text-red-600 dark:text-red-400 space-y-1" role="alert">
+                  @if (registerForm.get('age')?.getError('required')) {
+                    <p>• Age is required</p>
+                  }
+                </div>
+              }
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-medium text-purple-700 dark:text-purple-300 mb-1">Phone</label>
+              <input id="phone" formControlName="phone" type="tel" name="phone" aria-describedby="phone-help phone-errors"
+                     class="w-full px-3 py-2 border dark:text-white border-purple-200/50 dark:border-gray-600 rounded-lg bg-white/50 dark:bg-gray-800/50 focus:ring-2 focus:ring-purple-500 dark:focus:ring-pink-500 focus:border-transparent transition-all"
+                     placeholder="1234567890" aria-invalid="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched">
+              <p id="phone-help" class="text-xs text-purple-500/70 dark:text-purple-400/70 mt-1">Egyptian phone number format</p>
+              @if (registerForm.get('phone')?.touched && registerForm.get('phone')?.errors) {
+                <div id="phone-errors" class="mt-1 text-sm text-red-600 dark:text-red-400 space-y-1" role="alert">
+                  @if (registerForm.get('phone')?.getError('required')) {
+                    <p>• Phone number is required</p>
+                  }
+                  @if (registerForm.get('phone')?.getError('pattern')) {
+                    <p>• Please enter a valid Egyptian phone number</p>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+          <button type="submit"
+                  class="w-full py-2.5 cursor-pointer bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 dark:from-purple-600 dark:to-pink-600 text-white rounded-lg shadow-md transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600">
+            Create Account
+          </button>
+          <div class="mt-4 text-center text-sm">
+            <span class="text-purple-600 dark:text-purple-300">Already have an account? </span>
+            <a routerLink="/login" class="font-medium text-purple-700 hover:text-purple-800 dark:text-purple-200 dark:hover:text-purple-100 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600">
+              Login here
+            </a>
+          </div>
+        </form>
+      </div>
+      <div class="absolute inset-0 bg-purple-200/30 dark:bg-gray-900/20 rounded-lg blur-md opacity-30 -z-10"></div>
+    </div>
+  </div>
+</section>
